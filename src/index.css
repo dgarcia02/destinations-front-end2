@@ -16,3 +16,8 @@ main {
     background-color: #404040;
     color: #9C9C9C;
 }
+
+.card {
+    width: 60%;
+    margin: auto;
+}
