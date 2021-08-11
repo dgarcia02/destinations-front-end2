@@ -14,7 +14,9 @@ import Col from 'react-bootstrap/Col'
 
 
 const App = () => {
-    const [newImage, setNewImage] = useState('')
+    const [newImage1, setNewImage1] = useState('')
+    const [newImage2, setNewImage2] = useState('')
+    const [newImage3, setNewImage3] = useState('')
     const [newLocation, setNewLocation] = useState('')
     const [newLanguage, setNewLanguage] = useState('')
     const [newPopulation, setNewPopulation] = useState(0)
@@ -28,11 +30,20 @@ const App = () => {
             })
     })
 
-    // this is the handler to set the new image
-    const handleNewImage = (event) => {
+    // this is the handler to set the new images
+    const handleNewImage1 = (event) => {
         // grabs the value in the input tag
-        setNewImage(event.target.value)
+        setNewImage1(event.target.value)
     }
+    const handleNewImage2 = (event) => {
+        // grabs the value in the input tag
+        setNewImage2(event.target.value)
+    }
+    const handleNewImage3 = (event) => {
+        // grabs the value in the input tag
+        setNewImage3(event.target.value)
+    }
+
 
     // handler to set the new location
     const handleNewLocation = (event) => {
@@ -55,7 +66,9 @@ const App = () => {
         axios.post(
             "https://limitless-sands-92837.herokuapp.com/destinations",
             {
-                image: newImage,
+                image1: newImage1,
+                image2: newImage2,
+                image3: newImage3,
                 location: newLocation,
                 language: newLanguage,
                 population: newPopulation
@@ -92,7 +105,9 @@ const App = () => {
             .put(`https://limitless-sands-92837.herokuapp.com/destinations/${destinationData._id}`,
                 {
                     location: newLocation || destinationData.location,
-                    image: newImage || destinationData.image,
+                    image1: newImage1 || destinationData.image1,
+                    image2: newImage2 || destinationData.image2,
+                    image3: newImage3 || destinationData.image3,
                     language: newLanguage || destinationData.language,
                     population: newPopulation || destinationData.population
                 }
@@ -130,22 +145,24 @@ const styles = {
             <Auth />
             <Container>
 
-                <section>
-                <h1>Destinations</h1>
+                <section className='create-destination-form'>
+                <h3>Create a New Destination</h3>
                     <details>
                     <summary>New Destination</summary>
                         <form onSubmit={ handleNewDestinationsSubmit }>
                             Location: <input type="text" onChange={ handleNewLocation } /><br/>
-                            Image: <input type="text" onChange={ handleNewImage } /><br/>
+                            Image 1: <input type="text" onChange={ handleNewImage1 } /><br/>
+                            Image 2: <input type="text" onChange={ handleNewImage2 } /><br/>
+                            Image 3: <input type="text" onChange={ handleNewImage3 } /><br/>
                             Language: <input type="text" onChange={ handleNewLanguage } /><br/>
                             Population: <input type="text" onChange={ handleNewPopulation } /><br/>
-                            <input type="submit" value='Create New Destination' />
+                            <input class='btn btn-outline-secondary' type="submit" value='Create New Destination' />
                         </form>
                     </details>
-                </section>
+                </section><br />
 
                 <section>
-                    <h2>Destinations</h2>
+                    <h1>Destinations</h1>
                     <>
 
                         {
@@ -155,13 +172,13 @@ const styles = {
                                         <Card.Img varient='top' className='card-img' />
                                             <Carousel>
                                                 <Carousel.Item>
-                                                    <img src={destination.image} style={styles.cardImage}/>
+                                                    <img src={destination.image1} />
                                                 </Carousel.Item>
                                                 <Carousel.Item>
-                                                    <img src={destination.image} />
+                                                    <img src={destination.image2} />
                                                 </Carousel.Item>
                                                 <Carousel.Item>
-                                                    <img src={destination.image} />
+                                                    <img src={destination.image3} />
                                                 </Carousel.Item>
                                             </Carousel>
 
@@ -179,7 +196,9 @@ const styles = {
                                             <summary>Edit Destination</summary>
                                                 <form onSubmit={ (event) => { handleEdit (event, destination)} } >
                                                     Location: <input type="text" onChange={ handleNewLocation } /> <br/>
-                                                    Image: <input type="text" onChange={ handleNewImage } /> <br/>
+                                                    Image 1: <input type="text" onChange={ handleNewImage1 } /> <br/>
+                                                    Image 2: <input type="text" onChange={ handleNewImage2 } /> <br/>
+                                                    Image 3: <input type="text" onChange={ handleNewImage3 } /> <br/>
                                                     Language: <input type="text" onChange={ handleNewLanguage } /> <br/>
                                                     Population: <input type="text" onChange={ handleNewPopulation } /> <br/>
                                                     <input class='btn btn-info' type="submit" value='Update Destination' />
@@ -187,7 +206,7 @@ const styles = {
                                         </details>
 
                                         <Button class='btn' style={styles.delete} onClick={ (event) => {handleDelete(destination) } }>Delete</Button>
-                                    </Card>
+                                    </Card><br />
                                 </>
                             })
                         }
