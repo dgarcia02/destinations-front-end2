@@ -102,6 +102,7 @@ const App = () => {
                         setNewDestinations(response.data)
                     })
             })
+        event.currentTarget.reset()
     }
 
 
