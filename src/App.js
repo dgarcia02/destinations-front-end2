@@ -91,10 +91,10 @@ const App = () => {
         axios
             .put(`https://limitless-sands-92837.herokuapp.com/destinations/${destinationData._id}`,
                 {
-                    location: newLocation,
-                    image: newImage,
-                    language: newLanguage,
-                    population: newPopulation
+                    location: newLocation || destinationData.location,
+                    image: newImage || destinationData.image,
+                    language: newLanguage || destinationData.language,
+                    population: newPopulation || destinationData.population
                 }
             )
             .then(() => {
@@ -104,6 +104,7 @@ const App = () => {
                         setNewDestinations(response.data)
                     })
             })
+        event.currentTarget.reset()
     }
 
 const styles = {
