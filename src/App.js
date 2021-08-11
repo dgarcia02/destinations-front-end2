@@ -8,6 +8,8 @@ import Container from 'react-bootstrap/Container'
 import Button from 'react-bootstrap/Button'
 import Card from 'react-bootstrap/Card'
 import Carousel from 'react-bootstrap/Carousel'
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
 
 
 
@@ -104,6 +106,20 @@ const App = () => {
             })
     }
 
+const styles = {
+    card: {
+        backgroundColor: '#9C9C9C',
+        color: '#000000'
+    },
+    cardImage: {
+        objectFit: 'cover'
+    },
+    delete: {
+        backgroundColor: '#FF6200',
+        color: '#404040'
+    }
+}
+
 
 
 // rendering to the browser
@@ -134,11 +150,11 @@ const App = () => {
                         {
                             newDestinations.map((destination) => {
                                 return <>
-                                    <Card>
-                                        <Card.Img varient='top' />
+                                    <Card className='card' style={styles.card}>
+                                        <Card.Img varient='top' className='card-img' />
                                             <Carousel>
                                                 <Carousel.Item>
-                                                    <img src={destination.image} />
+                                                    <img src={destination.image} style={styles.cardImage}/>
                                                 </Carousel.Item>
                                                 <Carousel.Item>
                                                     <img src={destination.image} />
@@ -169,7 +185,7 @@ const App = () => {
                                                 </form>
                                         </details>
 
-                                        <Button class='btn btn-danger' onClick={ (event) => {handleDelete(destination) } }>Delete</Button>
+                                        <Button class='btn' style={styles.delete} onClick={ (event) => {handleDelete(destination) } }>Delete</Button>
                                     </Card>
                                 </>
                             })
