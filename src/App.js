@@ -14,9 +14,7 @@ import Col from 'react-bootstrap/Col'
 
 
 const App = () => {
-    const [newImage1, setNewImage1] = useState('')
-    const [newImage2, setNewImage2] = useState('')
-    const [newImage3, setNewImage3] = useState('')
+    const [newImage, setNewImage] = useState('')
     const [newLocation, setNewLocation] = useState('')
     const [newLanguage, setNewLanguage] = useState('')
     const [newPopulation, setNewPopulation] = useState(0)
@@ -30,20 +28,11 @@ const App = () => {
             })
     })
 
-    // this is the handler to set the new images
-    const handleNewImage1 = (event) => {
+    // this is the handler to set the new image
+    const handleNewImage = (event) => {
         // grabs the value in the input tag
-        setNewImage1(event.target.value)
+        setNewImage(event.target.value)
     }
-    const handleNewImage2 = (event) => {
-        // grabs the value in the input tag
-        setNewImage2(event.target.value)
-    }
-    const handleNewImage3 = (event) => {
-        // grabs the value in the input tag
-        setNewImage3(event.target.value)
-    }
-
 
     // handler to set the new location
     const handleNewLocation = (event) => {
@@ -66,9 +55,7 @@ const App = () => {
         axios.post(
             "https://limitless-sands-92837.herokuapp.com/destinations",
             {
-                image1: newImage1,
-                image2: newImage2,
-                image3: newImage3,
+                image: newImage,
                 location: newLocation,
                 language: newLanguage,
                 population: newPopulation
@@ -105,9 +92,7 @@ const App = () => {
             .put(`https://limitless-sands-92837.herokuapp.com/destinations/${destinationData._id}`,
                 {
                     location: newLocation || destinationData.location,
-                    image1: newImage1 || destinationData.image1,
-                    image2: newImage2 || destinationData.image2,
-                    image3: newImage3 || destinationData.image3,
+                    image: newImage || destinationData.image,
                     language: newLanguage || destinationData.language,
                     population: newPopulation || destinationData.population
                 }
@@ -151,9 +136,7 @@ const styles = {
                     <summary>New Destination</summary>
                         <form onSubmit={ handleNewDestinationsSubmit }>
                             Location: <input type="text" onChange={ handleNewLocation } /><br/>
-                            Image 1: <input type="text" onChange={ handleNewImage1 } /><br/>
-                            Image 2: <input type="text" onChange={ handleNewImage2 } /><br/>
-                            Image 3: <input type="text" onChange={ handleNewImage3 } /><br/>
+                            Image: <input type="text" onChange={ handleNewImage } /><br/>
                             Language: <input type="text" onChange={ handleNewLanguage } /><br/>
                             Population: <input type="text" onChange={ handleNewPopulation } /><br/>
                             <input class='btn btn-outline-secondary' type="submit" value='Create New Destination' />
@@ -172,13 +155,13 @@ const styles = {
                                         <Card.Img varient='top' className='card-img' />
                                             <Carousel>
                                                 <Carousel.Item>
-                                                    <img src={destination.image1} />
+                                                    <img src={destination.image} />
                                                 </Carousel.Item>
                                                 <Carousel.Item>
-                                                    <img src={destination.image2} />
+                                                    <img src={destination.image} />
                                                 </Carousel.Item>
                                                 <Carousel.Item>
-                                                    <img src={destination.image3} />
+                                                    <img src={destination.image} />
                                                 </Carousel.Item>
                                             </Carousel>
 
@@ -196,9 +179,7 @@ const styles = {
                                             <summary>Edit Destination</summary>
                                                 <form onSubmit={ (event) => { handleEdit (event, destination)} } >
                                                     Location: <input type="text" onChange={ handleNewLocation } /> <br/>
-                                                    Image 1: <input type="text" onChange={ handleNewImage1 } /> <br/>
-                                                    Image 2: <input type="text" onChange={ handleNewImage2 } /> <br/>
-                                                    Image 3: <input type="text" onChange={ handleNewImage3 } /> <br/>
+                                                    Image 1: <input type="text" onChange={ handleNewImage } /> <br/>
                                                     Language: <input type="text" onChange={ handleNewLanguage } /> <br/>
                                                     Population: <input type="text" onChange={ handleNewPopulation } /> <br/>
                                                     <input class='btn btn-info' type="submit" value='Update Destination' />
