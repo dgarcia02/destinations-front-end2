@@ -15,3 +15,20 @@ code {
 main {
     background-color: #404040;
 }
+
+h4 {
+    color: #ffffff;
+}
+
+.forms {
+    margin-left: 10em;
+}
+
+.loginForm, .createUserForm {
+    border-radius: 4px;
+    border: none;
+    margin-bottom: .5em;
+    margin-right: .5em;
+    padding: 4px;
+    background-color: #E5E5E5;
+}

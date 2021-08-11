@@ -76,18 +76,18 @@ const Auth = (props) => {
         }
     }
 
-    return(
-        <div>
+    return (
+        <div className="authSection">
             { toggleLogout ?
                 <button onClick={ handleLogout }>Logout</button>
                 :
-                <div>
+                <div className="forms">
                     { toggleLogin ?
                         <LoginForm handleLogin={handleLogin} toggleError={toggleError} errorMessage={errorMessage} />
                         :
                         <NewUserForm handleLogin={handleLogin} toggleError={toggleError} errorMessage={errorMessage} />
                     }
-                    <button onClick={ handleToggleForm }>{toggleLogin ? 'Need an account?' : 'Already have an account?'}</button>
+                    <button onClick={ handleToggleForm } class="btn btn-outline-secondary">{toggleLogin ? 'Need an account?' : 'Already have an account?'}</button>
                 </div>
             }
 
