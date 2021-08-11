@@ -18,7 +18,7 @@ const Auth = (props) => {
     const handleCreateUser = (userObj) => {
         // post to create a new user to the database
         axios.post(
-            "http://localhost:3000/newaccount", userObj)
+            "https://limitless-sands-92837.herokuapp.com/destinations", userObj)
             .then((response) => {
                 // if the user inputs a unique username then it will set these new useStates
                 if(response.data.username){
@@ -39,7 +39,7 @@ const Auth = (props) => {
 
     const handleLogin = (userObj) => {
         // console.log(userObj);
-        axios.put("http://localhost:3000/login", userObj)
+        axios.put("https://limitless-sands-92837.herokuapp.com/destinations", userObj)
         .then((response) => {
             if(response.data.username) {
                 console.log(response);
