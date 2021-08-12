@@ -19,16 +19,16 @@ const App = (props) => {
 
     return (
         <div>
-            <h1>Login</h1>
+            <h4>Login</h4>
             <form >
-                <input type='text' placeholder='username' onChange={ (event) => {setUsername(event.target.value)} } />
-                <input type='password' placeholder='password' onChange={ (event) => {setPassword(event.target.value)} } />
+                <input type='text' placeholder='username' className="loginForm" onChange={ (event) => {setUsername(event.target.value)} } />
+                <input type='password' placeholder='password' className="loginForm" onChange={ (event) => {setPassword(event.target.value)} } />
                 { props.toggleError ?
                     <h5>{props.errorMessage}</h5>
                     :
                     null
                 }
-                <input type='submit' value='Login' />
+                <input type='submit' value='Login' class="btn btn-secondary" />
             </form>
         </div>
     )
